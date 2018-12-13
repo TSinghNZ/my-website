@@ -1,0 +1,560 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Vollkorn|Roboto");
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  vertical-align: baseline;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  --main: #272755;
+  --bg: #edf2f4;
+  --bg-1: #f5f5f8;
+  --overlay-bg: #e14b5a;
+  --font-light: #d6e8fa;
+  --golden: #fec357;
+  --ghost-white: #f5f5f8;
+  --deep-koamaru: #2d2d74;
+  --quartz: #d6d6e3;
+  --salmon: #f9806a;
+  --bright-turquoise: #21d5f0;
+  --fog: #d7d5de;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+  margin: 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 2rem;
+}
+
+.landing {
+  background: var(--main);
+}
+
+.landing header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 999;
+  background: var(--main);
+}
+
+.landing header #navbar {
+  position: relative;
+  left: 5%;
+  width: 90%;
+  z-index: 1000;
+  height: 70px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 125px 1fr;
+      grid-template-columns: 125px 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.landing header #navbar .logo {
+  font-size: 1rem;
+  color: var(--font-light);
+}
+
+.landing header #navbar .button_container {
+  position: relative;
+  height: 27px;
+  width: 35px;
+  cursor: pointer;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.landing header #navbar .button_container:hover {
+  opacity: 0.7;
+}
+
+.landing header #navbar .button_container.active .top {
+  -webkit-transform: translateY(11px) translateX(0) rotate(45deg);
+          transform: translateY(11px) translateX(0) rotate(45deg);
+  background: white;
+}
+
+.landing header #navbar .button_container.active .middle {
+  opacity: 0;
+  background: white;
+}
+
+.landing header #navbar .button_container.active .bottom {
+  -webkit-transform: translateY(-11px) translateX(0) rotate(-45deg);
+          transform: translateY(-11px) translateX(0) rotate(-45deg);
+  background: white;
+}
+
+.landing header #navbar .button_container span {
+  background: var(--golden);
+  border: none;
+  border-radius: 4px;
+  height: 5px;
+  width: 100%;
+  position: absolute;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.landing header #navbar .button_container span:nth-of-type(2) {
+  top: 11px;
+}
+
+.landing header #navbar .button_container span:nth-of-type(3) {
+  top: 22px;
+}
+
+.landing header .overlay {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: var(--overlay-bg);
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.35s, visibility 0.35s, width 0.4s cubic-bezier(0.81, 0.01, 0.26, 0.99);
+  transition: opacity 0.35s, visibility 0.35s, width 0.4s cubic-bezier(0.81, 0.01, 0.26, 0.99);
+  overflow: hidden;
+  z-index: 80;
+}
+
+.landing header .overlay.open {
+  opacity: 1;
+  visibility: visible;
+  width: 100vw;
+}
+
+.landing header .overlay.open li {
+  -webkit-animation: fadeInLeft 0.5s cubic-bezier(0, 0.77, 0.4, 0.99) forwards;
+          animation: fadeInLeft 0.5s cubic-bezier(0, 0.77, 0.4, 0.99) forwards;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.landing header .overlay.open li:nth-of-type(2) {
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+}
+
+.landing header .overlay.open li:nth-of-type(3) {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.landing header .overlay.open li:nth-of-type(4) {
+  -webkit-animation-delay: 0.55s;
+          animation-delay: 0.55s;
+}
+
+.landing header .overlay .overlay-menu {
+  font-family: "Vollkorn", serif;
+  font-weight: 400;
+  font-size: 50px;
+  text-align: center;
+}
+
+.landing header .overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.landing header .overlay ul li {
+  display: block;
+  position: relative;
+  opacity: 0;
+}
+
+.landing header .overlay ul li a {
+  display: block;
+  padding: 1.5rem 0;
+  position: relative;
+  color: var(--font-light);
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.landing header .overlay ul li a:hover:after, .landing header .overlay ul li a:focus:after, .landing header .overlay ul li a:active:after {
+  width: 100%;
+}
+
+.landing header .overlay ul li a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 3px;
+  background: white;
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
+}
+
+.landing main.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  padding-top: 10rem;
+}
+
+@media screen and (min-width: 820px) {
+  .landing main.container {
+    padding-bottom: 5rem;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .landing main.container {
+    padding-bottom: 7rem;
+  }
+}
+
+.landing main.container .hero {
+  text-align: center;
+}
+
+@media screen and (min-width: 820px) {
+  .landing main.container .hero {
+    text-align: left;
+  }
+}
+
+.landing main.container .hero h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 3rem;
+  color: var(--font-light);
+}
+
+.landing main.container .hero p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  color: var(--font-light);
+  line-height: 1.5rem;
+}
+
+@media screen and (min-width: 820px) {
+  .landing main.container .hero p {
+    margin-left: 0;
+  }
+}
+
+.landing main.container .hero p::before {
+  content: "";
+  display: block;
+  width: 120px;
+  border: 2px solid var(--golden);
+  margin: 1em auto;
+}
+
+@media screen and (min-width: 820px) {
+  .landing main.container .hero p::before {
+    margin: 1rem 0;
+  }
+}
+
+.landing main.container .hero a {
+  display: inline-block;
+  background: var(--golden);
+  padding: 1em 2.5em;
+  margin: 2rem 0;
+  border-radius: 2em;
+  color: black;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.landing main.container .image .hero-fig {
+  text-align: center;
+}
+
+@media screen and (min-width: 820px) {
+  .landing main.container .image .hero-fig .hero-img {
+    margin-top: 3rem;
+  }
+}
+
+.landing main.container .image .hero-fig .hero-img #programmer {
+  width: 300px;
+  height: auto;
+}
+
+@-webkit-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    left: -20%;
+  }
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    left: -20%;
+  }
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+/* **************************************************Skill Section************************************************** */
+.skill-section .container {
+  padding-bottom: 4rem;
+}
+
+.skill-section .container > h1 {
+  font-size: 2.5rem;
+  color: var(--main);
+  margin: 1.5rem 0 2rem 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.skill-section .container .skills {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1em;
+}
+
+@media screen and (min-width: 490px) {
+  .skill-section .container .skills {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .skill-section .container .skills {
+    -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1em;
+  }
+}
+
+.skill-section .container .skills .skill-card {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 4rem;
+      grid-template-rows: 1fr 4rem;
+  background: var(--bg-1);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+  top: 0;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+@media screen and (min-width: 600px) {
+  .skill-section .container .skills .skill-card {
+    -ms-grid-columns: 0.5fr 1fr;
+        grid-template-columns: 0.5fr 1fr;
+    -ms-grid-rows: none;
+        grid-template-rows: none;
+  }
+}
+
+.skill-section .container .skills .skill-card:hover {
+  top: -2px;
+  -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.skill-section .container .skills .skill-card .skill-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background: white;
+}
+
+.skill-section .container .skills .skill-card .skill-text {
+  display: block;
+  text-align: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+/* **************************************************WORK************************************************** */
+.work-section {
+  background: white;
+}
+
+.work-section .container {
+  padding-bottom: 4rem;
+}
+
+.work-section .container > h1 {
+  font-size: 2.5rem;
+  color: var(--main);
+  margin: 1.5rem 0 2rem 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.work-section .container .work {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  grid-gap: 2rem;
+}
+
+@media screen and (min-width: 600px) {
+  .work-section .container .work {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 820px) {
+  .work-section .container .work {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .work-section .container .work {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.work-section .container .work .work-card {
+  color: var(--font-loght);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+.work-section .container .work .work-card .work-fig .work-img {
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.work-section .container .work .work-card .work-fig .social {
+  display: subgrid;
+}
+
+.work-section .container .work .work-card .work-text {
+  border-bottom-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  background: var(--golden);
+  padding: 2rem;
+}
+
+/* **************************************************WORK************************************************** */
+.footer-section {
+  background: var(--bg);
+}
+
+.footer-section .footer {
+  padding: 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer-section .footer .ftr-text {
+  color: var(--main);
+}
+
+.footer-section .footer .ftr-text i {
+  color: var(--overlay-bg);
+}
+
+.footer-section .footer .right a {
+  margin-left: 1rem;
+}
+
+.footer-section .footer .right a.github {
+  color: #211f1f;
+}
+
+.footer-section .footer .right a.linkedin {
+  color: #4875b4;
+}
+/*# sourceMappingURL=main.css.map */
